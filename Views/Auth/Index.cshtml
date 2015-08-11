@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Log In";
+}
+
+<h2>Log In</h2>
+
+Username: <input type="text" id="username" name="username" /><br />
+Password: <input type="password" id="password" name="password"<br />
+<input type="button" value="Log in" onclick="authenticate()" />
+
+<script type="text/javascript">
+    function authenticate() {
+        $.ajax({
+            type: "POST",
+            url: "/auth/user",
+            data: { username: $("#username").val(), password: $("#password").val() },
+            success: function (response) {
+                alert(response);
+            },
+            dataType: 'json'
+        });
+    }
+</script>
